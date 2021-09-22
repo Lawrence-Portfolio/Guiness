@@ -1,0 +1,32 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    person@update:
+        label: Person
+        type: recordfinder
+        list: $/bizmark/streaming/models/person/columns.yaml
+        recordsPerPage: 15
+        nameFrom: username
+        descriptionFrom: email
+        placeholder: Choose author of message
+        span: left
+
+    _download_image@update:
+        span: right
+        type: partial
+        path: $/bizmark/streaming/models/message/image_download.htm
+
+    content:
+        label: Message
+        type: textarea
+        size: small
+        span: left
+
+    is_image@update:
+        label: Only image in message
+        type: switch
+        on: Да
+        off: Нет
+        span: left

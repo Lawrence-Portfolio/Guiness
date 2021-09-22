@@ -1,0 +1,87 @@
+title = "Главная страница"
+url = "/"
+layout = "default"
+
+[Auth]
+
+[ChatWindow]
+==
+function onStart() {
+    $this['page_style'] = mix('css/index.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/index.js', 'themes/bizmark/assets');
+}
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+<section class="stream" id="live-stream">
+    <div class="container">
+        <h2>Live Stream</h2>
+        <div class="stream-wrap">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="{{ ChatWindow.stream_url }}" width="976" height="549" style="border:none" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+            </div>
+{#            <a class="btn btn-red live-stream" target="_blank" href="https://facecast.net/v/e6ilnb?nodate&noanimation">Live Stream</a>#}
+        </div>
+        <h2>Rules</h2>
+        <div class="text">
+            <ul>
+                <li class="lead mb-3">Log in to the chat below the broadcast with your user name and e-mail</li>
+                <li class="lead mb-3">Send your photo with special football staff to the chat (football jersey with a logo of F4F or any football team, OR soccer ball, OR football scarf with a logo of F4F or any football team, OR goalkeeper’s gloves, OR soccer cleats)</li>
+                <li class="lead mb-3">The photo should show your face and your football staff from the list above (you can be wearing it, if it is an item of clothing, or holding it in your hands, if it is a ball)</li>
+                <li class="lead mb-3">It can be a selfie, OR a waist-high photo, OR a full-length photo, OR a photo in a mirror</li>
+                <li class="lead mb-3">Receive a certificate of participation from GWR™ after the attempt</li>
+            </ul>
+        </div>
+        <h2>Live chat</h2>
+        {% partial 'chat/chat' %}
+    </div>
+</section>
+<section class="stream">
+    <div class="container">
+        <h2>Our Coaches</h2>
+        <div class="text">
+            <ul>
+                <li class="lead mb-3"><strong>Roberto Carlos</strong>, Brazil - Brazilian football legend, 2002 FIFA World Cup champion, 1998 FIFA World Cup Championship finalist</li>
+                <li class="lead mb-3"><strong>Mélody Donchet</strong>, France - Six-times World Freestyle Champion, Pro Female Football Freestyler, S3 Freestyle Team</li>
+                <li class="lead mb-3"><strong>Andréas Cetkovic</strong>, France - Freestyle Football and Basketball Champion, Juste Debout Winner, Co-founder of S3 Freestyle</li>
+                <li class="lead mb-3"><strong>Anton Pavlinov</strong>, Russia - Two-times World Freestyle Football Champion, creator and host of the Foothacker YouTube Channel</li>
+                <li class="lead mb-3"><strong>Pablo Cesar Torres</strong>, Uruguay - President of Youth Football and Scouting at Club Atlético Peñarol, Member of the Executive Board</li>
+                <li class="lead mb-3"><strong>Mike Puig</strong>, Spain - CEO of the Soccer Barcelona Youth Academy, Sports Consultant for football clubs and academies</li>
+                <li class="lead mb-3"><strong>Anatoliy Yanchev</strong>, Russia - Six-times Russian Freestyle Football Champion, bronze medalist of the World Championship in London (RBSS)</li>
+                <li class="lead mb-3"><strong>Elena Ryzhikova</strong>, Russia - International Master of Sports in football, Master of Sports in mini football, multiple winner of Championships, Cups of Russia</li>
+                <li class="lead mb-3"><strong>Vadim Kozlov</strong>, Russia - UEFA A licensed coach, sporting director of a “Chempionika” football school network, coach of FC Strogino</li>
+                <li class="lead mb-3"><strong>Maxim Zherebtsov</strong>, Russia - Moscow Freestyle Football Champion</li>
+                <li class="lead mb-3"><strong>Pavel Motorov</strong>, Russia - Three-times Russian Footbag Freestyle Football Champion, European tournaments medalist</li>
+                <li class="lead mb-3"><strong>Mutlu Aksel</strong>, Russia - Champion of Russia in an iron man discipline, World Championship medalist in a sick3 discipline</li>
+                <li class="lead mb-3"><strong>Young Ambassadors of Football for Friendship</strong></li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% put scripts %}
+    <script>
+        $(() => {
+            $('#loginForm').submit((target) => {
+                target.preventDefault();
+
+                $.oc.stripeLoadIndicator.show();
+
+                let form = $(target.currentTarget),
+                    button = form.find('button[type="submit"]');
+
+                button.attr('disabled', true);
+
+                form.request('Auth::onLogin', {
+                    complete: () => {
+                        $.oc.stripeLoadIndicator.hide();
+                        button.attr('disabled', false);
+                    }
+                })
+            })
+        })
+    </script>
+{% endput %}

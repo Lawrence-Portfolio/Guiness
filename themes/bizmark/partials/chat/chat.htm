@@ -1,0 +1,98 @@
+{% set person = Auth.getPersonObject() %}
+
+{% if person is not empty and person.is_activated %}
+    <div class="message-layout no-auth d-flex justify-content-center align-items-center mb-3">
+        <button class="btn btn-red btn-modal" data-request="Auth::onLogOut">Log out</button>
+    </div>
+    <div class="message-layout auth">
+        {{ form_open({
+            class: 'user-message-wrap',
+            id: 'messageForm'
+        }) }}
+            <input type="text" name="message" class="user-message" placeholder="Your message…" autocomplete="off">
+            <div class="control-btns">
+                <button type="button" class="upload-image" id="upload-image-btn">
+                    <span id="upload-text">Upload a photo</span>
+                    <span class="file-size-invalid"></span>
+                    {# <img class="img-fluid" id="preview-image" src="" alt=""> #}
+                    <div id="preview-images"></div>
+                    <img class="upload-icon" src="{{ 'assets/images/svg/upload-icon.svg'|theme }}" alt="Upload">
+                </button>
+                <input type="file" name="files[]" multiple accept=".jpg, .jpeg, .png" id="upload-image-input" style="display: none;">
+                <button type="submit" class="enter-message">
+                    <div class="cricle">
+                        <img src="{{ 'assets/images/svg/triangle-right.svg'|theme }}" alt="Enter message">
+                    </div>
+                </button>
+            </div>
+        {{ form_close() }}
+    </div>
+{% elseif person is not empty and not person.is_activated %}
+    <div class="message-layout confirm-email">
+        <div class="user-message-wrap">
+            <div class="confirm-email-message">
+                An email with a link to confirm your registration has been sent to your email inbox.
+            </div>
+        </div>
+    </div>
+{% else %}
+    {{ form_open({
+        class: 'go-to-chat',
+        id: 'loginForm'
+    }) }}
+    <input class="form-control" type="email" name="email" placeholder="Please enter your email" required>
+    <input class="form-control" type="text" name="username" placeholder="Please enter your nickname" required>
+    <button type="submit" class="btn btn-red btn-modal">Go to chat</button>
+    <div class="mw-100 m-0 ml-3 mt-sm-0 mt-3 text-muted font-weight-light">By clicking the "Go to chat" button, I consent to the processing of personal data in accordance with the conditions set out below</div>
+    {{ form_close() }}
+{% endif %}
+<div class="live-chat mt-3">
+    <div class="messages" id="messagesWrap">
+        {% partial 'chat/messages' messages=ChatWindow.messages %}
+    </div>
+</div>
+{% put scripts %}
+    <script>
+        $(() => {
+            messageForm()
+            scrollChatWindow()
+            setInterval(checkMessages, {{ ChatWindow.check_interval }}000)
+        });
+
+        function checkMessages() {
+            $.request('ChatWindow::onCheckMessages', {
+                complete: () => scrollChatWindow()
+            })
+        }
+
+        function scrollChatWindow() {
+            let chatWindow = $('#messagesWrap');
+            // chatWindow.scrollTop(chatWindow.prop('scrollHeight'))
+            chatWindow.scrollTop(0)
+        }
+
+        function messageForm() {
+            $('#messageForm').submit((target) => {
+                target.preventDefault()
+
+                $.oc.stripeLoadIndicator.show();
+
+                let form = $(target.currentTarget),
+                    button = form.find('button[type="submit"]');
+
+                button.attr('disabled', true);
+
+                form.request('ChatWindow::onSubmit', {
+                    files: true,
+                    complete: () => {
+                        scrollChatWindow()
+                        button.attr('disabled', false);
+                        form.trigger('reset');
+                        $.oc.stripeLoadIndicator.hide();
+                    }
+                })
+            })
+        }
+
+    </script>
+{% endput %}

@@ -1,0 +1,8 @@
+<script>
+    $(() => setInterval(updateMessages, <?= $this->getMessagesInterval(); ?>000))
+
+    function updateMessages() {
+        $.request('onRefresh')
+    }
+</script>
+<?= $this->listRender() ?>

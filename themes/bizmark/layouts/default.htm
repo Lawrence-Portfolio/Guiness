@@ -1,0 +1,72 @@
+description = "Динамический шаблон"
+
+[SeoToolbox]
+==
+<?php
+function onStart() {
+    $this['vendor_style'] = mix('css/vendor.css', 'themes/bizmark/assets');
+    $this['layout_style'] = mix('css/common.css', 'themes/bizmark/assets');
+    $this['layout_script'] = mix('js/common.js', 'themes/bizmark/assets');
+}
+?>
+==
+<!doctype html>
+<html lang="ru">
+<head>
+    {{ SeoToolbox.getHeadBegin()|raw }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow">
+    {% placeholder seo_tags default %}
+        {% component 'SeoToolbox' %}
+    {% endplaceholder %}
+    <link rel="stylesheet" href="{{ vendor_style }}">
+    <link rel="stylesheet" href="{{ layout_style }}">
+    {% placeholder page_style %}
+    {% styles %}
+    {{ SeoToolbox.getHeadEnd()|raw }}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(70130755, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70130755" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(70130965, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70130965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    {{ SeoToolbox.getBodyBegin()|raw }}
+    {% partial 'header/header' %}
+    <main>
+        {% page %}
+    </main>
+    {% partial 'footer/footer' %}
+    {% partial 'modal/go-to-chat' %}
+    {% partial 'modal/rules' %}
+    <script src="{{ layout_script }}"></script>
+    {% placeholder page_script %}
+    {% scripts %}
+    {{ SeoToolbox.getBodyEnd()|raw }}
+</body>
+</html>

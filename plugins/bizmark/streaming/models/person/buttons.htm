@@ -1,0 +1,46 @@
+<?php if ($model->is_activated) : ?>
+    <button
+        data-primary-button
+        type="button"
+        class="btn btn-warning oc-icon-user-times"
+        data-request="onDeactivate"
+        data-request-data="'id':<?= $model->id; ?>"
+        data-confirm="Are you sure?"
+        data-stripe-load-indicator>
+        Deactivate person
+    </button>
+<?php else : ?>
+    <button
+        data-primary-button
+        type="button"
+        class="btn btn-success oc-icon-user-plus"
+        data-request="onActivate"
+        data-request-data="'id':<?= $model->id; ?>"
+        data-confirm="Are you sure?"
+        data-stripe-load-indicator>
+        Activate person
+    </button>
+<?php endif; ?>
+<?php if ($model->is_blocked) : ?>
+    <button
+        data-primary-button
+        type="button"
+        class="btn btn-success oc-icon-ban"
+        data-request="onUnBan"
+        data-request-data="'id':<?= $model->id; ?>"
+        data-confirm="Are you sure?"
+        data-stripe-load-indicator>
+        Unblock person
+    </button>
+<?php else : ?>
+    <button
+        data-primary-button
+        type="button"
+        class="btn btn-danger oc-icon-ban"
+        data-request="onBan"
+        data-request-data="'id':<?= $model->id; ?>"
+        data-confirm="Are you sure?"
+        data-stripe-load-indicator>
+        Block person
+    </button>
+<?php endif; ?>

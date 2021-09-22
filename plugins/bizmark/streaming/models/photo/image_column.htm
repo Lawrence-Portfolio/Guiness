@@ -1,0 +1,13 @@
+<?php if (!empty($record->attachment)) : ?>
+    <?php
+    $extension = explode('/', $record->content_type);
+    $extension = end($extension);
+    ?>
+    <a href="<?= $record->path; ?>" download="<?= $record->attachment->username . ' - ' . $record->attachment->email . '.'.$extension ?>">
+<?php else : ?>
+    <a href="<?= $record->path; ?>" download="">
+<?php endif; ?>
+    <picture>
+        <img style="width: 100px" src="<?= $value; ?>" alt="">
+    </picture>
+</a>

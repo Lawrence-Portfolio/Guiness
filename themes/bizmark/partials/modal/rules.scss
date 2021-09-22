@@ -1,0 +1,18 @@
+.modal-rules {
+  max-width: 1240px;
+  margin: 3rem auto;
+}
+.modal-content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #12293C;
+  padding: 25px 25px 0;
+  .go-live-stream {
+    margin: 30px 0;
+  }
+}
+.rules-comntent {
+  max-height: 650px;
+  overflow: auto;
+}

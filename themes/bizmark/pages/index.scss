@@ -1,0 +1,112 @@
+@import "../build/scss/variables";
+@import '../partials/chat/chat.scss';
+@import '../partials/modal/go-to-chat.scss';
+@import '../partials/modal/rules.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&display=swap');
+
+.go-live-stream {
+  text-align: start;
+  min-width: 325px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 24px;
+  padding: 8px 15px 8px 25px;
+  text-transform: uppercase;
+  &::after {
+    content: '';
+    margin-left: 20px;
+    border: 12px solid transparent;
+    border-left: 20px solid #fff;
+  }
+}
+
+
+.stream {
+  background-color: #F6F9FF;
+  padding-bottom: 50px;
+  h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0;
+    padding: 40px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+.stream-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  .live-stream {
+    width: 355px;
+    text-transform: uppercase;
+    font-size: 24px;
+  }
+}
+.go-to-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  margin-bottom: 30px;
+  background-color: #fff;
+  .form-control {
+    max-width: 300px;
+  }
+  .btn-red {
+    margin-bottom: 15px;
+  }
+}
+.accent {
+  color: #A5321A;
+}
+
+@media(min-width: 992px) {
+  .stream-wrap {
+    .live-stream {
+      position: absolute;
+      bottom: 45px;
+    }
+  }
+}
+
+@media(max-width: 991px) {
+  .stream-wrap {
+    .live-stream {
+      margin-top: 40px;
+    }
+  }
+  .go-live-stream {
+    min-width: 305px;
+    font-size: 22px;
+  }
+}
+
+@media(max-width: 575px) {
+  .stream {
+    background-color: #fff;
+    padding-bottom: 30px;
+    h2 {
+      padding: 30px 0;
+    }
+  }
+  .stream-wrap {
+    .live-stream {
+      width: 100%;
+    }
+  }
+  .go-live-stream {
+    min-width: 100%;
+    font-size: 20px;
+    padding: 8px 0;
+    justify-content: center;
+    &::after {
+      margin-left: 15px;
+      border: 10px solid transparent;
+      border-left: 16px solid #fff;
+    }
+  }
+}
+

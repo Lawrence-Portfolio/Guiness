@@ -1,0 +1,25 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    stream_url:
+        label: Embed link to stream
+        type: textarea
+        size: tiny
+        span: full
+
+    participant_update_time_interval:
+        label: Interval of polling messages for participants in seconds
+        span: left
+        type: number
+
+    moderator_update_time_interval:
+        label: Message polling interval for moderators in seconds
+        span: right
+        type: number
+
+#    participant_send_time_interval:
+#        label: Delay between sending messages in seconds
+#        span: left
+#        type: number

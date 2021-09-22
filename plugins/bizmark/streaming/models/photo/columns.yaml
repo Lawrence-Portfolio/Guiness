@@ -1,0 +1,27 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    path:
+        label: Image
+        type: partial
+        path: $/bizmark/streaming/models/photo/image_column.htm
+
+    _person:
+        label: Person
+        type: partial
+        path: $/bizmark/streaming/models/photo/person_column.htm
+
+    created_at:
+        label: Created at
+        type: time
+
+    updated_at:
+        label: Updated at
+        type: timesince
+        invisible: true

@@ -1,0 +1,17 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    content:
+        label: Message
+        type: textarea
+        size: small
+        span: full
+
+    is_image:
+        label: Only image in message
+        type: switch
+        on: Yes
+        off: No
+        span: left

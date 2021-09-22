@@ -1,0 +1,13 @@
+<?php if (!empty($model->attachment)) : ?>
+<?php
+    $extension = explode('/', $model->content_type);
+    $extension = end($extension);
+?>
+    <a href="<?= $model->path; ?>" download="<?= $model->attachment->username . ' - ' . $model->attachment->email . '.'.$extension ?>">
+<?php else : ?>
+    <a href="<?= $model->path; ?>" download="">
+<?php endif; ?>
+    <picture>
+        <img style="max-width: 100%" src="<?= $model->path; ?>" alt="">
+    </picture>
+</a>

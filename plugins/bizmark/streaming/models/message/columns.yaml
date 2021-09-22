@@ -1,0 +1,32 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    person_name:
+        label: Person
+        relation: person
+        select: concat(username, ' - ', email)
+        searchable: true
+
+    content:
+        label: Message
+        width: 960px
+        searchable: true
+
+    is_image:
+        label: Image
+        type: switch
+
+    created_at:
+        label: Created at
+        type: time
+
+    updated_at:
+        label: Updated at
+        type: timesince
+        invisible: true

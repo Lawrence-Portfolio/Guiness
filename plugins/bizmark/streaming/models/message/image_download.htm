@@ -1,0 +1,17 @@
+<?php if (!empty($model->person_id)) : ?>
+    <a
+        class="btn btn-default m-t-md"
+        style="position: relative;top:-5px"
+        href="<?= Backend::url('bizmark/streaming/persons/update').'/'.$model->person->id ?>">
+        Open person
+    </a>
+    <?php /*if (!empty($model->person->image)) : ?>
+        <a
+            class="btn btn-default oc-icon-download m-t-md"
+            style="position: relative;top:-5px"
+            download="<?= $model->person->username . ' - '. $model->person->email.'.'.$model->person->image->getExtensionAttribute(); ?>"
+            href="<?= $model->person->image->path; ?>">
+            Download person images
+        </a>
+    <?php endif; */?>
+<?php endif; ?>

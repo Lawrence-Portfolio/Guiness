@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Message
+
+# Model Form Field configuration
+form: $/bizmark/streaming/models/message/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Streaming\Models\Message
+
+# Default redirect location
+defaultRedirect: bizmark/streaming/messages
+
+# Create page
+create:
+    title: Create message
+    redirect: bizmark/streaming/messages/update/:id
+    redirectClose: bizmark/streaming/messages
+
+# Update page
+update:
+    title: Edit message
+    redirect: bizmark/streaming/messages
+    redirectClose: bizmark/streaming/messages
+
+# Preview page
+preview:
+    title: Preview Message

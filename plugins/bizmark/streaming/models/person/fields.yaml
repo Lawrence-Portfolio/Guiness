@@ -1,0 +1,45 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    username:
+        label: Username
+        placeholder: Username
+        span: storm
+        cssClass: col-md-4 col-xs-12 col-md-offset-2
+
+    email:
+        label: Email
+        placeholder: Email
+        span: storm
+        cssClass: col-md-4 col-xs-12
+
+    buttons@update:
+        span: storm
+        cssClass: col-md-4 col-xs-12 col-md-offset-2
+        type: partial
+        path: $/bizmark/streaming/models/person/buttons.htm
+
+tabs:
+    fields:
+        _messages@create:
+            label: The list of member messages will appear after its creation
+            tab: Messages
+            type: section
+            span: storm
+            cssClass: col-md-8 col-xs-12 col-md-offset-2 text-center
+
+        messages@update:
+            label: Person messgaes
+            tab: Messages
+            type: partial
+            span: storm
+            cssClass: col-md-8 col-xs-12 col-md-offset-2
+
+        images:
+            label: Images
+            type: fileupload
+            tab: Files
+            span: storm
+            cssClass: col-md-8 col-xs-12 col-md-offset-2

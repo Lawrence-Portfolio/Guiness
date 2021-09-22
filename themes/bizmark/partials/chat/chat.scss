@@ -1,0 +1,266 @@
+.live-chat {
+    .messages {
+        padding: 20px 40px;
+        background-color: #fff;
+        height: 815px;
+        max-height: 815px;
+        overflow-y: auto;
+        margin-bottom: 25px;
+        .image-wrap {
+            max-width: 320px;
+            padding: 15px 0 60px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            .btn-download {
+                padding: 4px 16px;
+                display: flex;
+                align-items: flex-start;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                font-size: 14px;
+                font-family: "Lato";
+            }
+            .download-icon {
+                margin-left: 15px;
+            }
+        }
+        .image-wrap.preview {
+            padding: 15px 0;
+            margin: 0;
+        }
+        .external-message {
+            justify-content: flex-start;
+            .message {
+                color: #000;
+                background: #f7fbff;
+            }
+            .message-date {
+                margin-left: 5px;
+            }
+        }
+        .internal-message {
+            justify-content: flex-end;
+            .message {
+                color: #fff;
+                background-color: #0a2c68;
+            }
+            .username {
+                text-align: end;
+            }
+            .message-date {
+                margin-right: 5px;
+            }
+        }
+        .text-message {
+            display: flex;
+            .message-wrap {
+                padding: 20px 0;
+                font-family: "Roboto";
+            }
+            .message {
+                padding: 14px 20px;
+                width: 445px;
+                max-width: 445px;
+                font-size: 18px;
+                font-weight: 700;
+                border-radius: 30px;
+            }
+            .username {
+                margin-top: 10px;
+                font-style: italic;
+                color: #002952;
+            }
+        }
+    }
+}
+.user-message-wrap {
+    flex: 1 1 auto;
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    .user-message {
+        flex: 1 1 auto;
+        height: 75px;
+        border: none;
+        background-color: transparent;
+        padding: 0 30px;
+        outline: none;
+        color: #002952;
+        font-size: 18px;
+        font-weight: 500;
+        &::placeholder {
+            font-weight: 300;
+            font-size: 18px;
+            color: #002952;
+        }
+    }
+    .control-btns {
+        display: flex;
+    }
+    .upload-image {
+        padding: 0 15px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        font-style: italic;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 12px;
+            bottom: 12px;
+            width: 1px;
+            background-color: #b7b7b7;
+        }
+    }
+    #preview-image {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        display: none;
+    }
+    .upload-icon {
+        margin-left: 10px;
+    }
+    .enter-message {
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        &:hover {
+            .cricle {
+                filter: brightness(120%);
+            }
+        }
+        .cricle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 58px;
+            height: 58px;
+            background-color: #0a2c68;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+.message-layout {
+    .attention {
+        max-width: 150px;
+        font-size: 12px;
+        color: #8c8c8c;
+        margin-top: 20px;
+    }
+}
+.message-layout.confirm-email {
+    .confirm-email-message {
+        padding: 10px;
+    }
+}
+.file-size-invalid {
+    display: none;
+    position: absolute;
+    bottom: 3px;
+    width: 300px;
+    right: -50px;
+    font-size: 12px;
+    color: #a5321a;
+}
+.error-icon {
+    width: 26px;
+    margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+    .live-chat {
+        .messages {
+            .text-message {
+                .message {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    width: 320px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 575px) {
+    .message-layout {
+        background-color: #f6f9ff;
+        padding: 0 10px 10px;
+    }
+    .message-layout.no-auth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background-color: transparent;
+        padding: 0;
+        margin-top: 30px;
+    }
+    .live-chat {
+        padding: 10px;
+        background-color: #f6f9ff;
+        .messages {
+            margin-bottom: 0;
+            padding: 20px 15px;
+            .text-message {
+                .message-wrap {
+                    width: 100%;
+                }
+                .message {
+                    width: 100%;
+                }
+            }
+            .image-wrap {
+                padding: 15px 0 40px;
+            }
+        }
+    }
+    .user-message-wrap {
+        .upload-image {
+            min-width: 55px;
+            padding: 0 5px;
+            &::before {
+                display: none;
+            }
+        }
+        .enter-message {
+            padding: 0 15px 0 7px;
+            .cricle {
+                width: 42px;
+                height: 42px;
+                img {
+                    width: 10px;
+                }
+            }
+        }
+        .user-message {
+            width: 115px;
+            padding: 0 10px;
+            font-size: 16px;
+            &::placeholder {
+                font-size: 16px;
+            }
+        }
+    }
+    .live-chat {
+        padding: 10px;
+        background-color: #f6f9ff;
+    }
+
+    .modal-wrap {
+        text-align: center;
+        margin-top: 30px;
+    }
+}

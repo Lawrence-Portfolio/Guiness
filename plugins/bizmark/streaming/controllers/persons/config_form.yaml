@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Person
+
+# Model Form Field configuration
+form: $/bizmark/streaming/models/person/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Streaming\Models\Person
+
+# Default redirect location
+defaultRedirect: bizmark/streaming/persons
+
+# Create page
+create:
+    title: Create person
+    redirect: bizmark/streaming/persons/update/:id
+    redirectClose: bizmark/streaming/persons
+
+# Update page
+update:
+    title: Update person
+    redirect: bizmark/streaming/persons
+    redirectClose: bizmark/streaming/persons
+
+# Preview page
+preview:
+    title: Preview Person

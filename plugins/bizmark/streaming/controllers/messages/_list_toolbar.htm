@@ -1,0 +1,62 @@
+<div data-control="toolbar" class="loading-indicator-container">
+    <a
+        href="<?= Backend::url('bizmark/streaming/messages/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        Sent message as moderator
+    </a>
+    <a
+        href="javascript:;"
+        data-request="onRefresh"
+        data-load-indicator="<?= e(trans('backend::lang.list.updating')) ?>"
+        class="btn btn-primary oc-icon-refresh">
+        Force update
+    </a>
+    <!--button
+        class="btn btn-danger oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
+        data-request="onDelete"
+        data-request-confirm="Вы уверены что хотите удалить выбранные сообщения?"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', 'disabled')"
+        data-stripe-load-indicator>
+        Удалить выбранное
+    </button-->
+    <div class="info-text">
+        Auto-refresh every <?= \BizMark\Streaming\Models\Settings::get('moderator_update_time_interval'); ?> seconds
+    </div>
+    <button
+        data-primary-button
+        type="button"
+        class="btn btn-default oc-icon-download"
+        data-request="onDownloadMessages"
+        data-confirm="Начать скачивание сообщений?"
+        data-stripe-load-indicator>
+        Download messages history
+    </button>
+</div>
+<style>
+    .info-text {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        background-image: none;
+        color: #656d79;
+        font-size: 12px;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 8px 19.5px;
+        line-height: 1.42857143;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>

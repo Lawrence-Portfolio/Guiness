@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Photo
+
+# Model Form Field configuration
+form: $/bizmark/streaming/models/photo/fields.yaml
+
+# Model Class name
+modelClass: System\Models\File
+
+# Default redirect location
+defaultRedirect: bizmark/streaming/photos
+
+# Create page
+create:
+    title: Create Photo
+    redirect: bizmark/streaming/photos/update/:id
+    redirectClose: bizmark/streaming/photos
+
+# Update page
+update:
+    title: Edit Photo
+    redirect: bizmark/streaming/photos
+    redirectClose: bizmark/streaming/photos
+
+# Preview page
+preview:
+    title: Preview Photo

@@ -1,0 +1,16 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+messages:
+    label: Person messages
+    manage:
+        recordsPerPage: 15
+        form: $/bizmark/streaming/models/message/fields_popup.yaml
+        list: $/bizmark/streaming/models/message/columns_popup.yaml
+    view:
+        recordsPerPage: 15
+        list: $/bizmark/streaming/models/message/columns_popup.yaml
+        toolbarButtons:
+            create: Create
+            delete: Delete
